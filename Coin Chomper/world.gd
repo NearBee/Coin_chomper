@@ -17,7 +17,7 @@ extends Node2D
 
 func _ready():
 	'''Function thats to be called right as the game is ready to be played'''
+	RenderingServer.set_default_clear_color(Color.BLACK)
 
-	# Creating the polygons for the collision polygons
 	polygon_2d.polygon = collision_polygon_2d.polygon
 	polygon_2d2.polygon = collision_polygon_2d2.polygon
