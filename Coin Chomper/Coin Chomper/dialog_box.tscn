@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://fd6csikvdn37"]
+
+[ext_resource type="Script" path="res://DialogBox.gd" id="1_x0u5e"]
+[ext_resource type="PackedScene" uid="uid://bs2ew641cs5gi" path="res://label.tscn" id="2_f6nuu"]
+
+[node name="DialogBox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 24.0
+offset_right = 256.0
+offset_bottom = 64.0
+script = ExtResource("1_x0u5e")
+
+[node name="Label" parent="." instance=ExtResource("2_f6nuu")]
+layout_mode = 0
+anchors_preset = 0

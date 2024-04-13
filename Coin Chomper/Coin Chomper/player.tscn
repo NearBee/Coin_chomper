@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=3 uid="uid://1wnsqvvvumwh"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_4lvvb"]
+[ext_resource type="Texture2D" uid="uid://c1u66fvvo4a8s" path="res://tilemap-characters.png" id="2_nwiq0"]
+[ext_resource type="Script" path="res://DialogBox.gd" id="3_kgffa"]
+[ext_resource type="PackedScene" uid="uid://bs2ew641cs5gi" path="res://label.tscn" id="4_pw2na"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2d6al"]
+size = Vector2(18.2645, 49.5868)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4ubl"]
+atlas = ExtResource("2_nwiq0")
+region = Rect2(150, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aof0l"]
+atlas = ExtResource("2_nwiq0")
+region = Rect2(175, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txrbc"]
+atlas = ExtResource("2_nwiq0")
+region = Rect2(0, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cesgp"]
+atlas = ExtResource("2_nwiq0")
+region = Rect2(25, 0, 25, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3xbk5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4ubl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aof0l")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txrbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cesgp")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+floor_constant_speed = true
+floor_snap_length = 3.0
+script = ExtResource("1_4lvvb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.42, -12)
+scale = Vector2(0.484, 0.484)
+shape = SubResource("RectangleShape2D_2d6al")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+scale = Vector2(1, 1.02)
+sprite_frames = SubResource("SpriteFrames_3xbk5")
+animation = &"walk"
+flip_h = true
+
+[node name="Coyote Jump Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="DialogBox" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_kgffa")
+
+[node name="Label" parent="DialogBox" instance=ExtResource("4_pw2na")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.225
+anchor_top = 1.187
+anchor_right = 1.225
+anchor_bottom = 1.187
+offset_left = -145.0
+offset_top = -119.48
+offset_right = 47.0
+offset_bottom = -79.48
+rotation = 0.0007723
