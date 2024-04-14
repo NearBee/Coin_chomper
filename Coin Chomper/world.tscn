@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqajbxmi4ryaw"]
+[gd_scene load_steps=7 format=3 uid="uid://cqajbxmi4ryaw"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_bd7ed"]
 [ext_resource type="PackedScene" uid="uid://1wnsqvvvumwh" path="res://player.tscn" id="2_sjx26"]
+[ext_resource type="Script" path="res://PlayerMovementData.gd" id="3_pu88e"]
+[ext_resource type="PackedScene" uid="uid://fd6csikvdn37" path="res://dialog_box.tscn" id="3_q0l2m"]
+[ext_resource type="PackedScene" uid="uid://bs2ew641cs5gi" path="res://label.tscn" id="5_rj8ov"]
+
+[sub_resource type="Resource" id="Resource_2x5kd"]
+script = ExtResource("3_pu88e")
+speed = 100.0
+acceleration = 550.0
+friction = 920.0
+jump_velocity = -300.0
+gravity_scale = 1.0
+air_resistance = 200.0
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_bd7ed")
@@ -24,3 +36,30 @@ polygon = PackedVector2Array(166.957, 100, 166.957, 133.333, 256, 133.333, 256, 
 
 [node name="Player" parent="." instance=ExtResource("2_sjx26")]
 position = Vector2(16, 32)
+movement_data = SubResource("Resource_2x5kd")
+
+[node name="DialogBox" parent="Player" instance=ExtResource("3_q0l2m")]
+visible = false
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 304.0
+offset_bottom = 56.0
+scale = Vector2(0.335564, 0.398667)
+
+[node name="VisibilityTimer" type="Timer" parent="Player/DialogBox"]
+wait_time = 0.5
+
+[node name="Label" parent="Player/DialogBox" instance=ExtResource("5_rj8ov")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 192.0
+offset_bottom = 40.0
+grow_horizontal = 1
+grow_vertical = 1

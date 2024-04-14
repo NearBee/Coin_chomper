@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://1wnsqvvvumwh"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_4lvvb"]
-[ext_resource type="Resource" uid="uid://xlnoyjo4ew8d" path="res://DefaultMovementData.tres" id="2_4ot17"]
+[ext_resource type="Resource" uid="uid://xlnoyjo4ew8d" path="res://DefaultMovementData.tres" id="2_erxfr"]
 [ext_resource type="Texture2D" uid="uid://c1u66fvvo4a8s" path="res://tilemap-characters.png" id="2_nwiq0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2d6al"]
@@ -52,7 +52,7 @@ animations = [{
 floor_constant_speed = true
 floor_snap_length = 3.0
 script = ExtResource("1_4lvvb")
-movement_data = ExtResource("2_4ot17")
+movement_data = ExtResource("2_erxfr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.42, -12)
