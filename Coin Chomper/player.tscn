@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://1wnsqvvvumwh"]
+[gd_scene load_steps=11 format=3 uid="uid://1wnsqvvvumwh"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_4lvvb"]
 [ext_resource type="Resource" uid="uid://xlnoyjo4ew8d" path="res://DefaultMovementData.tres" id="2_4ot17"]
 [ext_resource type="Texture2D" uid="uid://c1u66fvvo4a8s" path="res://tilemap-characters.png" id="2_nwiq0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2d6al"]
-size = Vector2(18.2645, 49.5868)
+size = Vector2(22.3967, 49.5868)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4ubl"]
 atlas = ExtResource("2_nwiq0")
@@ -48,14 +48,18 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4s0b"]
+size = Vector2(7, 18)
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 floor_constant_speed = true
 floor_snap_length = 3.0
 script = ExtResource("1_4lvvb")
 movement_data = ExtResource("2_4ot17")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.42, -12)
+position = Vector2(0.579996, -12)
 scale = Vector2(0.484, 0.484)
 shape = SubResource("RectangleShape2D_2d6al")
 
@@ -72,3 +76,16 @@ one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -40)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+editor_draw_limits = true
+
+[node name="HazardDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetection"]
+position = Vector2(0.5, -12)
+shape = SubResource("RectangleShape2D_m4s0b")
+
+[connection signal="area_entered" from="HazardDetection" to="." method="_on_hazard_detection_area_entered"]

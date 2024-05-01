@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqajbxmi4ryaw"]
+[gd_scene load_steps=8 format=3 uid="uid://cqajbxmi4ryaw"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_bd7ed"]
 [ext_resource type="PackedScene" uid="uid://1wnsqvvvumwh" path="res://player.tscn" id="2_sjx26"]
 [ext_resource type="Script" path="res://PlayerMovementData.gd" id="3_pu88e"]
 [ext_resource type="PackedScene" uid="uid://fd6csikvdn37" path="res://dialog_box.tscn" id="3_q0l2m"]
 [ext_resource type="PackedScene" uid="uid://bs2ew641cs5gi" path="res://label.tscn" id="5_rj8ov"]
+[ext_resource type="PackedScene" uid="uid://dlkownktxl2l" path="res://spikes.tscn" id="6_ks5li"]
 
 [sub_resource type="Resource" id="Resource_2x5kd"]
 script = ExtResource("3_pu88e")
@@ -20,16 +21,17 @@ air_acceleration = 400.0
 script = ExtResource("1_bd7ed")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(0, 24)
 scale = Vector2(0.5, 0.5)
-polygon = PackedVector2Array(0, 16, 0, 320, 640, 320, 640, -48, 256, -48, 256, -32, 496, -32, 528, -32, 560, -32, 560, 16, 560, 48, 560, 96, 560, 112, 560, 112, 560, 128, 544, 176, 512, 224, 496, 240, 480, 256, 464, 272, 432, 288, 416, 288, 400, 288, 368, 288, 320, 288, 192, 288, 126.22, 288, 48, 272, 32, 256, 16, 208, 16, 128, 16, 80, 32, 48, 48, 32, 80, 32, 96, 32, 112, 48, 128, 64, 128, 16, 64, 16)
+polygon = PackedVector2Array(0, 16, 0, 320, 640, 320, 640, -48, 432, -48, 256, -48, 256, -32, 496, -32, 528, -32, 560, -32, 560, 288, 192, 288, 126.22, 288, 32, 288, 32, 256, 32, 208, 32, 128, 32, 80, 32, 32, 48, 32, 80, 32, 96, 32, 112, 32, 112, 64, 128, 64, 128, 16, 64, 16)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(8, 8)
+position = Vector2(40, 8)
 scale = Vector2(0.71875, 0.72)
 polygon = PackedVector2Array(166.957, 100, 166.957, 133.333, 256, 133.333, 256, 100)
 
@@ -64,3 +66,21 @@ offset_right = 192.0
 offset_bottom = 40.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Spikes" parent="." instance=ExtResource("6_ks5li")]
+position = Vector2(24, 160)
+
+[node name="Spikes2" parent="." instance=ExtResource("6_ks5li")]
+position = Vector2(32, 160)
+
+[node name="Spikes3" parent="." instance=ExtResource("6_ks5li")]
+position = Vector2(24, 48)
+rotation = 3.14159
+
+[node name="Spikes4" parent="." instance=ExtResource("6_ks5li")]
+position = Vector2(40, 48)
+rotation = 3.14159
+
+[node name="Spikes5" parent="." instance=ExtResource("6_ks5li")]
+position = Vector2(48, 48)
+rotation = 3.14159
