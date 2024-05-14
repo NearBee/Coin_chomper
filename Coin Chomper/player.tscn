@@ -78,7 +78,6 @@ one_shot = true
 position = Vector2(0, -40)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
-editor_draw_limits = true
 
 [node name="HazardDetection" type="Area2D" parent="."]
 collision_layer = 0

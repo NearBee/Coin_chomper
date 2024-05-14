@@ -13,6 +13,7 @@ extends Node2D
 
 @onready var collision_polygon_2d2 = $StaticBody2D/CollisionPolygon2D2
 @onready var polygon_2d2 = $StaticBody2D/CollisionPolygon2D2/Polygon2D
+@onready var level_completed = $CanvasLayer/LevelCompleted
 
 
 func _ready():
@@ -21,3 +22,11 @@ func _ready():
 
 	polygon_2d.polygon = collision_polygon_2d.polygon
 	polygon_2d2.polygon = collision_polygon_2d2.polygon
+	
+	Events.level_completed.connect(show_level_completed)
+	# Connecting of 'level_completed' to the show_level_completed() function
+	# in .Events
+	
+func show_level_completed():
+	level_completed.show()
+	get_tree().paused = true
