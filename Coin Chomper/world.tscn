@@ -1,13 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqajbxmi4ryaw"]
+[gd_scene load_steps=7 format=3 uid="uid://cqajbxmi4ryaw"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_bd7ed"]
 [ext_resource type="PackedScene" uid="uid://1wnsqvvvumwh" path="res://player.tscn" id="2_sjx26"]
 [ext_resource type="Script" path="res://PlayerMovementData.gd" id="3_pu88e"]
-[ext_resource type="PackedScene" uid="uid://fd6csikvdn37" path="res://dialog_box.tscn" id="3_q0l2m"]
-[ext_resource type="PackedScene" uid="uid://bs2ew641cs5gi" path="res://label.tscn" id="5_rj8ov"]
-[ext_resource type="PackedScene" uid="uid://dlkownktxl2l" path="res://spikes.tscn" id="6_ks5li"]
-[ext_resource type="PackedScene" uid="uid://dauy8igf3mpht" path="res://diamond.tscn" id="7_giv4f"]
 [ext_resource type="PackedScene" uid="uid://dfwlvyvja780d" path="res://level_completed.tscn" id="8_8xseh"]
+[ext_resource type="PackedScene" uid="uid://bklq7k8e457l4" path="res://level_tile_map.tscn" id="9_ygp8w"]
 
 [sub_resource type="Resource" id="Resource_2x5kd"]
 script = ExtResource("3_pu88e")
@@ -22,91 +19,13 @@ air_acceleration = 400.0
 [node name="World" type="Node2D"]
 script = ExtResource("1_bd7ed")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_mask = 0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(0, 24)
-scale = Vector2(0.5, 0.5)
-polygon = PackedVector2Array(0, 16, 0, 320, 640, 320, 640, -48, 432, -48, 256, -48, 256, -32, 496, -32, 528, -32, 560, -32, 560, 288, 192, 288, 126.22, 288, 32, 288, 32, 256, 32, 208, 32, 128, 32, 80, 32, 32, 48, 32, 80, 32, 96, 32, 112, 32, 112, 64, 128, 64, 128, 16, 64, 16)
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(40, 8)
-scale = Vector2(0.71875, 0.72)
-polygon = PackedVector2Array(166.957, 100, 166.957, 133.333, 256, 133.333, 256, 100)
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D2"]
-
 [node name="Player" parent="." instance=ExtResource("2_sjx26")]
-position = Vector2(16, 32)
 movement_data = SubResource("Resource_2x5kd")
-
-[node name="DialogBox" parent="Player" instance=ExtResource("3_q0l2m")]
-visible = false
-offset_left = 112.0
-offset_top = 16.0
-offset_right = 304.0
-offset_bottom = 56.0
-scale = Vector2(0.335564, 0.398667)
-
-[node name="VisibilityTimer" type="Timer" parent="Player/DialogBox"]
-wait_time = 0.5
-
-[node name="Label" parent="Player/DialogBox" instance=ExtResource("5_rj8ov")]
-visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 192.0
-offset_bottom = 40.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="Spikes" parent="." instance=ExtResource("6_ks5li")]
-position = Vector2(24, 160)
-
-[node name="Spikes2" parent="." instance=ExtResource("6_ks5li")]
-position = Vector2(32, 160)
-
-[node name="Spikes3" parent="." instance=ExtResource("6_ks5li")]
-position = Vector2(24, 48)
-rotation = 3.14159
-
-[node name="Spikes4" parent="." instance=ExtResource("6_ks5li")]
-position = Vector2(40, 48)
-rotation = 3.14159
-
-[node name="Spikes5" parent="." instance=ExtResource("6_ks5li")]
-position = Vector2(48, 48)
-rotation = 3.14159
-
-[node name="Diamond" parent="." instance=ExtResource("7_giv4f")]
-position = Vector2(208, 72)
-
-[node name="Diamond2" parent="." instance=ExtResource("7_giv4f")]
-position = Vector2(192, 72)
-
-[node name="Diamond3" parent="." instance=ExtResource("7_giv4f")]
-position = Vector2(176, 72)
-
-[node name="Diamond4" parent="." instance=ExtResource("7_giv4f")]
-position = Vector2(184, 64)
-
-[node name="Diamond5" parent="." instance=ExtResource("7_giv4f")]
-position = Vector2(200, 64)
-
-[node name="Diamond6" parent="." instance=ExtResource("7_giv4f")]
-position = Vector2(192, 56)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelCompleted" parent="CanvasLayer" instance=ExtResource("8_8xseh")]
 visible = false
 offset_bottom = 4.0
+
+[node name="LevelTileMap" parent="." instance=ExtResource("9_ygp8w")]

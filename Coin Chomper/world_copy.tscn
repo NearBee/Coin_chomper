@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://bpl3bygd741ao"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_n7oht"]
+[ext_resource type="PackedScene" uid="uid://1wnsqvvvumwh" path="res://player.tscn" id="2_d7ta6"]
+[ext_resource type="Script" path="res://PlayerMovementData.gd" id="3_s46a8"]
+[ext_resource type="PackedScene" uid="uid://fd6csikvdn37" path="res://dialog_box.tscn" id="4_lht3j"]
+[ext_resource type="PackedScene" uid="uid://bs2ew641cs5gi" path="res://label.tscn" id="5_28k7a"]
+[ext_resource type="PackedScene" uid="uid://dlkownktxl2l" path="res://spikes.tscn" id="6_5txnq"]
+[ext_resource type="PackedScene" uid="uid://dauy8igf3mpht" path="res://diamond.tscn" id="7_frtwn"]
+[ext_resource type="PackedScene" uid="uid://dfwlvyvja780d" path="res://level_completed.tscn" id="8_dbpc1"]
+[ext_resource type="PackedScene" uid="uid://bklq7k8e457l4" path="res://level_tile_map.tscn" id="9_4b6ff"]
+[ext_resource type="PackedScene" uid="uid://gmncbbgwof68" path="res://collectible_coin.tscn" id="10_3emmm"]
+
+[sub_resource type="Resource" id="Resource_2x5kd"]
+script = ExtResource("3_s46a8")
+speed = 100.0
+acceleration = 550.0
+friction = 920.0
+jump_velocity = -300.0
+gravity_scale = 1.0
+air_resistance = 200.0
+air_acceleration = 400.0
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_n7oht")
+
+[node name="Player" parent="." instance=ExtResource("2_d7ta6")]
+position = Vector2(16, 32)
+movement_data = SubResource("Resource_2x5kd")
+
+[node name="DialogBox" parent="Player" instance=ExtResource("4_lht3j")]
+visible = false
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 304.0
+offset_bottom = 56.0
+scale = Vector2(0.335564, 0.398667)
+
+[node name="VisibilityTimer" type="Timer" parent="Player/DialogBox"]
+wait_time = 0.5
+
+[node name="Label" parent="Player/DialogBox" instance=ExtResource("5_28k7a")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 192.0
+offset_bottom = 40.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Spikes" parent="." instance=ExtResource("6_5txnq")]
+position = Vector2(32, 152)
+
+[node name="Spikes2" parent="." instance=ExtResource("6_5txnq")]
+position = Vector2(40, 152)
+
+[node name="Spikes3" parent="." instance=ExtResource("6_5txnq")]
+position = Vector2(32, 72)
+rotation = 3.14159
+
+[node name="Spikes4" parent="." instance=ExtResource("6_5txnq")]
+position = Vector2(48, 72)
+rotation = 3.14159
+
+[node name="Spikes5" parent="." instance=ExtResource("6_5txnq")]
+position = Vector2(64, 72)
+rotation = 3.14159
+
+[node name="Diamond" parent="." instance=ExtResource("7_frtwn")]
+position = Vector2(224, 56)
+
+[node name="Diamond2" parent="." instance=ExtResource("7_frtwn")]
+position = Vector2(208, 72)
+
+[node name="Diamond3" parent="." instance=ExtResource("7_frtwn")]
+position = Vector2(176, 72)
+
+[node name="Diamond4" parent="." instance=ExtResource("7_frtwn")]
+position = Vector2(160, 40)
+
+[node name="Diamond5" parent="." instance=ExtResource("7_frtwn")]
+position = Vector2(224, 40)
+
+[node name="Diamond6" parent="." instance=ExtResource("7_frtwn")]
+position = Vector2(160, 56)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelCompleted" parent="CanvasLayer" instance=ExtResource("8_dbpc1")]
+visible = false
+offset_bottom = 4.0
+
+[node name="LevelTileMap" parent="." instance=ExtResource("9_4b6ff")]
+position = Vector2(-24, 32)
+layer_0/tile_data = PackedInt32Array(2, 262145, 6, 65538, 65537, 4, 65537, 1, 7, 1, 196609, 6, 131074, 327681, 7, 131073, 196609, 7, 196610, 327681, 7, 196609, 196609, 7, 262146, 327681, 7, 262145, 196609, 7, 327682, 327681, 7, 327681, 196609, 7, 393217, 196609, 7, 458753, 196609, 7, 458754, 327681, 7, 524289, 196609, 7, 589825, 196609, 8, 589826, 262145, 8, 393218, 327681, 7, 3, 262145, 6, 4, 262145, 6, 5, 327681, 6, 65541, 327681, 8, 65540, 262145, 8, 65539, 262145, 8, 589827, 262145, 8, 589828, 262145, 8, 589829, 262145, 8, 589830, 262145, 8, 589831, 262145, 8, 589832, 262145, 8, 589833, 262145, 8, 589834, 262145, 8, 589835, 262145, 8, 589836, 262145, 8, 589837, 262145, 8, 589838, 262145, 8, 589839, 262145, 8, 589840, 262145, 8, 589841, 65537, 8, 589842, 262145, 8, 589843, 262145, 8, 589844, 262145, 8, 589845, 327681, 8, 524309, 327681, 7, 458773, 327681, 7, 393237, 327681, 7, 327701, 327681, 7, 262165, 327681, 7, 196629, 327681, 7, 131093, 327681, 7, 65557, 327681, 7, 21, 327681, 7, -65515, 327681, 7, -131051, 327681, 7, -131053, 65537, 4, -131054, 262145, 8, -131055, 262145, 8, -131056, 262145, 8, -131057, 262145, 8, -131058, 262145, 8, -131059, 262145, 8, -131060, 262145, 8, -131061, 262145, 8, -131062, 262145, 8, -131063, 196609, 8, -196588, 262145, 6, -196589, 262145, 6, -196587, 327681, 6, -196590, 262145, 6, -196591, 262145, 6, -196592, 262145, 6, -196593, 262145, 6, -196594, 262145, 6, -196595, 262145, 6, -196596, 262145, 6, -196597, 262145, 6, -196598, 262145, 6, -196599, 196609, 6, 196620, 0, 1, 196622, 0, 1, 262157, 0, 1, 262156, 0, 1, 196623, 0, 1, 262159, 0, 1, 262155, 0, 1, 196619, 0, 1, 524306, 262145, 6, 458771, 196609, 7, 393235, 196609, 7, 327699, 196609, 7, 262163, 196609, 7, 196627, 196609, 7, 131091, 196609, 7, 65555, 196609, 7, 19, 196609, 7, -65517, 196609, 7, 524305, 262145, 6, -131052, 458753, 7, 20, 262145, 7, 65556, 262145, 7, 131092, 262145, 7, 196628, 262145, 7, 262164, 262145, 7, 327700, 262145, 7, 393236, 65537, 7, 458772, 262145, 7, 524308, 65537, 7, -65516, 262145, 7, 524307, 65537, 4, 524291, 262145, 6, 524292, 262145, 6, 524293, 262145, 6, 524294, 262145, 6, 524295, 262145, 6, 524296, 262145, 6, 524297, 262145, 6, 524298, 262145, 6, 524299, 262145, 6, 524300, 262145, 6, 524301, 262145, 6, 524302, 262145, 6, 524303, 262145, 6, 524304, 262145, 6, 524290, 65537, 4, 262158, 0, 1, 196621, 0, 1)
+layer_1/tile_data = PackedInt32Array(458770, 4, 0, 131087, 4, 0, 131083, 524288, 0)
+
+[node name="CollectibleCoin" parent="." instance=ExtResource("10_3emmm")]
+position = Vector2(176, 40)
+
+[node name="CollectibleCoin2" parent="." instance=ExtResource("10_3emmm")]
+position = Vector2(208, 40)
+
+[node name="CollectibleCoin3" parent="." instance=ExtResource("10_3emmm")]
+position = Vector2(192, 72)
